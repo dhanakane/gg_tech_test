@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  redis:
+    image: "redis:alpine"
+    container_name: "redis"
+    command: "redis-server --requirepass test --port 10000"
+    ports:
+      - "10000:10000"
+    environment:
+      - REDISCLI_AUTH=test
+    volumes:
+    - ./tmp/redis_data:/var/lib/redis/data
+  app: 
+    build: .
+    container_name: "app"
+    ports:
+      - "8080:9999"
+    depends_on:
+      - redis
+    environment:
+      - PORT=9999
+      - REDIS_HOST=redis
+      - REDIS_PORT=10000
+      - REDIS_DB=0
+      - REDIS_PASSWORD=test
