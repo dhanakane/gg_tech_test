@@ -12,7 +12,7 @@ services:
     volumes:
     - ./tmp/redis_data:/var/lib/redis/data
   app: 
-    build: .
+    image: "dhanakane/devops_app:latest"
     container_name: "app"
     ports:
       - "8080:9999"
@@ -22,5 +22,5 @@ services:
       - PORT=9999
       - REDIS_HOST=redis
       - REDIS_PORT=10000
-      - REDIS_DB=0
       - REDIS_PASSWORD=test
+      - REDIS_DB=0
