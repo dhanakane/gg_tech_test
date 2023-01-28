@@ -39,9 +39,6 @@ func main() {
 		DB:       c.RedisDb,
 	})
 
-	pong, err := r.Ping(r.Context()).Result()
-	log.Println(pong, err)
-
 	router := gin.Default()
 
 	router.GET("/:id", func(c *gin.Context) {
@@ -69,16 +66,6 @@ func main() {
 		}
 		return
 	})
-
-	/*
-	router.GET("/ping", func(c *gin.Context) {
-		if _, err := r.Ping(context.Background()).Result(); err != nil {
-			c.Status(http.StatusInternalServerError)
-		} else {
-			c.Status(http.StatusOK)
-		}
-	})
-	*/
 
 	_ = router.Run(fmt.Sprintf(":%d", c.Port))
 }
