@@ -1,0 +1,12 @@
+apiVersion: skaffold/v4beta2
+kind: Config
+metadata:
+  name: devops
+manifests:
+  rawYaml:
+  - app-deployment.yaml
+  - app-service.yaml
+  - devops-default-networkpolicy.yaml
+  - redis-claim0-persistentvolumeclaim.yaml
+  - redis-deployment.yaml
+  - redis-service.yaml
