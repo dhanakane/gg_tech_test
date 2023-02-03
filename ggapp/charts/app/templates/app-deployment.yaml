@@ -24,7 +24,7 @@ spec:
             - name: REDIS_PASSWORD
               value: test
             - name: REDIS_PORT
-              value: "10000"
+              value: "6379"
             - name: GIN_MODE
               value: release
             - name: APP_PORT
